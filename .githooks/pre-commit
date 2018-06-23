@@ -1,0 +1,24 @@
+#!/bin/sh
+
+clear
+
+echo " [START] pre-commit scripts"
+
+function rm_dirs_by_name { 
+	local pattern=${1:-"test"}
+	find . -name "$pattern" -type d -print -exec rm -rf {} +
+}
+
+function ensure_dir {
+	local prefix_path=${1:-".meta"}
+	mkdir -p ${prefix_path}
+}
+
+function ls_dirs_size {
+	local limit=${1:-"50"}
+	local export_file=${1:-".meta/ls-dirs.by_size.top${limit}.output"}
+	ensure_dir
+	du -m . | sort -nr | head -n $limit > ${export_file}
+}
+
+echo " [END] pre-commit scripts"
