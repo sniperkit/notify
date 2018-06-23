@@ -1,0 +1,10 @@
+hash: 92278b124ecadf8556d0e5bdf8ff6d9ab68bdae8d3b45931536a6de0388e11f5
+updated: 2018-06-23T15:39:52.351701768+02:00
+imports:
+- name: golang.org/x/sys
+  version: 63fc586f45fe72d95d5240a5d5eb95e6503907d3
+  subpackages:
+  - unix
+testImports:
+- name: github.com/rjeczalik/notify
+  version: d152f3ce359a5464dc41e84a8919fc67e55bbbf0

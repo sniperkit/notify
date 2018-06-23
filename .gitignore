@@ -90,3 +90,18 @@ Session.vim
 ### JetBrains files ###
 .idea/
 *.iml
+
+bin
+bin/
+bin/*
+bin/**
+
+dist
+dist/
+dist/*
+dist/**
+
+vendor
+vendor/
+vendor/*
+vendor/**
