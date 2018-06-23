@@ -44,17 +44,12 @@ info_vcs:
 	@echo "VCS_GIT_REMOTE_URL=${VCS_GIT_REMOTE_URL}"
 	@echo "VCS_GIT_VERSION=${VCS_GIT_VERSION}"
 
-build: semver
-	@go build -ldflags "-X $(VCS_GIT_REMOTE_URI)/pkg/version.VERSION=`$(VCS_GIT_VERSION)`" -o ./bin/$(PROG_NAME) ./cmd/$(PROG_NAME)/*.go
+build:
+	@go build -ldflags "-X $(VCS_GIT_REMOTE_URI)/pkg/version.VERSION=`$(VERSION_INFILE)`" -o ./bin/$(PROG_NAME) ./cmd/$(PROG_NAME)/*.go
 	@./bin/$(PROG_NAME) --version
 
-semver:
-	@echo "Previous version: $(VERSION_INFILE)"
-	@echo "$(VERSION)" > $(CURDIR)/VERSION
-	@echo "Current version: $(VERSION)"
-
-install: semver deps
-	@go install-ldflags "-X $(VCS_GIT_REMOTE_URI)/pkg/version.VERSION=`$(VCS_GIT_VERSION)`" ./cmd/$(PROG_NAME)
+install: deps
+	@go install-ldflags "-X $(VCS_GIT_REMOTE_URI)/pkg/version.VERSION=`$(VERSION_INFILE)`" ./cmd/$(PROG_NAME)
 	@$(PROG_NAME) --version
 
 fast: deps
