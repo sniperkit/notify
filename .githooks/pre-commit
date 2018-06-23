@@ -1,7 +1,6 @@
 #!/bin/sh
 
-clear
-
+echo ""
 echo " [START] pre-commit scripts"
 
 function rm_dirs_by_name { 
@@ -22,3 +21,4 @@ function ls_dirs_size {
 }
 
 echo " [END] pre-commit scripts"
+echo ""
